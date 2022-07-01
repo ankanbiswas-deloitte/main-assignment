@@ -25,6 +25,14 @@ class Projects(models.Model):
     creator = models.ForeignKey(Users, on_delete=models.DO_NOTHING,null=False,related_name='createdBy')
     description = models.CharField(max_length=250)
 
+
+class Sprints(models.Model):
+    sprint_id = models.AutoField(primary_key=True)
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+    project_id = models.ForeignKey(Projects,on_delete=models.DO_NOTHING,null=False)
+    isActive = models.BooleanField()
+
 class Issues(models.Model):
     status_choices = (
         (1,"Open"),
@@ -49,5 +57,16 @@ class Issues(models.Model):
     assignee = models.ForeignKey(Users,on_delete=models.DO_NOTHING,related_name="assignee",null=True)
     pid = models.ForeignKey(Projects,on_delete=models.DO_NOTHING,null=True)
     status_id = models.IntegerField(choices=status_choices,default=1)
+    sprint_id = models.ForeignKey(Sprints,on_delete=models.DO_NOTHING,null=True)
+
+class Label(models.Model):
+    label_id = models.AutoField(primary_key=True)
+    label_name = models.CharField(max_length=50)
+
+class LabelIssueMappings(models.Model):
+    id = models.AutoField(primary_key=True)
+    label_id = models.ForeignKey(Label,on_delete=models.DO_NOTHING,null=False)
+    issue_id = models.ForeignKey(Issues,on_delete=models.DO_NOTHING,null=False)
+
 
 

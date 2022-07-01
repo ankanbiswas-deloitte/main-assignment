@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 mainassignment/__pycache__/
+issuetracker/__pycache__/
+issuetracker/migrations
 .vscode/
 data/
 

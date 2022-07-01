@@ -74,4 +74,6 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('username',)
     ordering = ('username',)
     filter_horizontal = ()
+
 admin.site.register(Users,UserAdmin)
+admin.site.register(Label)

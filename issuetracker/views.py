@@ -225,6 +225,12 @@ class Issue(APIView):
             return Response({"message":"Issue not found!"},content_type = 'application/json', status=status.HTTP_404_NOT_FOUND)
 
 
+class Labels(APIView):
+    def get(self, request, *args, **kwargs):
+        labels = Label.objects.all()
+        serializer = serializers.LabelSerializer(labels,many=True)
+        return Response({"message":serializer.data},content_type = 'application/json', status=status.HTTP_200_OK)
+
 class Type(APIView):
     def get(self,request, *args, **kwargs):
         choices = Issues.type_choices

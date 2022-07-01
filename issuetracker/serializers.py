@@ -32,3 +32,8 @@ class GetProjects(serializers.ModelSerializer):
         model = Projects
         fields = ['title','description','pid','creator','createdBy']
     depth=2
+
+class LabelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Label
+        fields = '__all__'
