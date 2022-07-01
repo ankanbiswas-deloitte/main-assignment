@@ -1,0 +1,4 @@
+- model: issuetracker.Types
+  pk: 1
+  fields:
+    type_name: Issue

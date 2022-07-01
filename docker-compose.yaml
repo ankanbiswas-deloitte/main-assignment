@@ -2,13 +2,16 @@ version: "3.10"
 
 services:
   db:
-    image: postgres
+    image: postgres:14-alpine
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - "5432:5432"
 
   web:
     build: .

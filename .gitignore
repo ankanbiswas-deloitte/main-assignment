@@ -2,6 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+mainassignment/__pycache__/
+.vscode/
+data/
 
 
 # C extensions
